@@ -4,9 +4,17 @@ from rest_framework.response import Response
 from risk_profile.objects import UserData
 
 
-# Serializer
+# Serializers
 class UserDataSerializer(serializers.Serializer):
-    text = serializers.CharField(max_length=20)
+    STATUSES = ('single', 'married')
+
+    age = serializers.IntegerField()
+    dependents = serializers.IntegerField()
+    house = serializers.BooleanField()
+    income = serializers.IntegerField()
+    marital_status = serializers.ChoiceField(choices=STATUSES)
+    risk_answers = serializers.ListField(child=serializers.BooleanField())
+    vehicle = serializers.BooleanField()
 
     def create(self, validated_data):
         return UserData(**validated_data)
@@ -15,7 +23,7 @@ class UserDataSerializer(serializers.Serializer):
         pass
 
 
-# View
+# Views
 class UserDataViewSet(viewsets.ViewSet):
     serializer_class = UserDataSerializer
 
