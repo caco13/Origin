@@ -13,7 +13,7 @@ class UserDataSerializer(serializers.Serializer):
     house = serializers.BooleanField()
     income = serializers.IntegerField()
     marital_status = serializers.ChoiceField(choices=STATUSES)
-    risk_answers = serializers.ListField(child=serializers.BooleanField())
+    risk_questions = serializers.ListField(child=serializers.BooleanField())
     vehicle = serializers.BooleanField()
 
     def create(self, validated_data):
