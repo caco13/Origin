@@ -36,11 +36,11 @@ class UserDataSerializer(serializers.Serializer):
 
     age = serializers.IntegerField()
     dependents = serializers.IntegerField()
-    house = HouseSerializer(required=False)
+    house = HouseSerializer()
     income = serializers.IntegerField()
     marital_status = serializers.ChoiceField(choices=STATUSES)
     risk_questions = serializers.ListField(child=serializers.BooleanField())
-    vehicle = VehicleSerializer(required=False)
+    vehicle = VehicleSerializer()
 
     def create(self, validated_data):
         return UserData(**validated_data)
@@ -59,5 +59,6 @@ class UserDataViewSet(viewsets.ViewSet):
             serializer.save()
             user_data = serializer.data
             risk_profile = Risk(user_data)
-            return Response(risk_profile.evaluate(), status=status.HTTP_201_CREATED)
+            return Response(risk_profile.evaluate(),
+                            status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
