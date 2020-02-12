@@ -5,6 +5,9 @@ from risk_profile.objects import UserData
 
 
 # Serializers
+from risk_profile.risk import Risk
+
+
 class HouseSerializer(serializers.Serializer):
     STATUSES = ('owner', 'mortgaged')
 
@@ -53,6 +56,8 @@ class UserDataViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = UserDataSerializer(data=request.data)
         if serializer.is_valid():
-            user_data = serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save()
+            user_data = serializer.data
+            risk_profile = Risk(user_data)
+            return Response(risk_profile.evaluate(), status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
