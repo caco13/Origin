@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 
-from risk_profile.api import UserDataViewSet
+from risk_profile.views import UserDataViewSet
 
 
 urlpatterns = [
