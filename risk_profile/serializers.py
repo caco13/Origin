@@ -26,13 +26,18 @@ class VehicleSerializer(serializers.Serializer):
         pass
 
 
+def greater_than_zero(value):
+    if value < 0:
+        raise serializers.ValidationError('Must be greater than 0')
+
+
 class UserDataSerializer(serializers.Serializer):
     STATUSES = ('single', 'married')
 
-    age = serializers.IntegerField()
-    dependents = serializers.IntegerField()
+    age = serializers.IntegerField(validators=[greater_than_zero])
+    dependents = serializers.IntegerField(validators=[greater_than_zero])
     house = HouseSerializer()
-    income = serializers.IntegerField()
+    income = serializers.IntegerField(validators=[greater_than_zero])
     marital_status = serializers.ChoiceField(choices=STATUSES)
     risk_questions = serializers.ListField(child=serializers.BooleanField())
     vehicle = VehicleSerializer()
@@ -42,3 +47,5 @@ class UserDataSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         pass
+
+
