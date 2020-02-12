@@ -9,7 +9,7 @@ from risk_profile.risk import Risk
 
 
 class HouseSerializer(serializers.Serializer):
-    STATUSES = ('owner', 'mortgaged')
+    STATUSES = ('owned', 'mortgaged')
 
     ownership_status = serializers.ChoiceField(
         choices=STATUSES, required=False)
