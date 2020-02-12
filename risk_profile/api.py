@@ -5,16 +5,39 @@ from risk_profile.objects import UserData
 
 
 # Serializers
+class HouseSerializer(serializers.Serializer):
+    STATUSES = ('owner', 'mortgaged')
+
+    ownership_status = serializers.ChoiceField(
+        choices=STATUSES, required=False)
+
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
+
+class VehicleSerializer(serializers.Serializer):
+    year = serializers.IntegerField(required=False)
+
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
+
 class UserDataSerializer(serializers.Serializer):
     STATUSES = ('single', 'married')
 
     age = serializers.IntegerField()
     dependents = serializers.IntegerField()
-    house = serializers.BooleanField()
+    house = HouseSerializer(required=False)
     income = serializers.IntegerField()
     marital_status = serializers.ChoiceField(choices=STATUSES)
     risk_questions = serializers.ListField(child=serializers.BooleanField())
-    vehicle = serializers.BooleanField()
+    vehicle = VehicleSerializer(required=False)
 
     def create(self, validated_data):
         return UserData(**validated_data)
