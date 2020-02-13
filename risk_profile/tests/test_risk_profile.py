@@ -14,8 +14,8 @@ class RiskTest(TestCase):
             'vehicle': {'year': 2005}
         }
 
-    def test_risk_profile_scenario_1(self):
-        """Scenario 1:
+    def test_risk_profile_base_scenario(self):
+        """
             0 <= age < 30
             dependents > 0
             house = mortgaged
@@ -33,8 +33,8 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_2(self):
-        """Scenario 2:
+    def test_risk_profile_base_age_case_2(self):
+        """
             30 <= age < 40
             dependents > 0
             house = mortgaged
@@ -53,8 +53,8 @@ class RiskTest(TestCase):
             'life': 'regular'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_3(self):
-        """Scenario 3:
+    def test_risk_profile_base_age_case_3(self):
+        """
             40 <= age <= 60
             dependents > 0
             house = mortgaged
@@ -73,8 +73,8 @@ class RiskTest(TestCase):
             'life': 'regular'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_4(self):
-        """Scenario 4:
+    def test_risk_profile_base_age_case_4(self):
+        """
             age > 60
             dependents > 0
             house = mortgaged
@@ -93,8 +93,8 @@ class RiskTest(TestCase):
             'life': 'ineligible'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_5(self):
-        """Scenario 5:
+    def test_risk_profile_base_dependents_case_2(self):
+        """
             0 <= age < 30
             dependents = 0
             house = mortgaged
@@ -113,8 +113,8 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_6(self):
-        """Scenario 6:
+    def test_risk_profile_base_house_case_2(self):
+        """
             0 <= age < 30
             dependents > 0
             house = owned
@@ -133,8 +133,8 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_7(self):
-        """Scenario 7:
+    def test_risk_profile_base_house_case_3(self):
+        """
             0 <= age < 30
             dependents > 0
             house = 0
@@ -153,7 +153,7 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_8(self):
+    def test_risk_profile_base_income_case_2(self):
         """Scenario 8:
             0 <= age < 30
             dependents > 0
@@ -173,7 +173,7 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_9(self):
+    def test_risk_profile_base_income_case_3(self):
         """Scenario 9:
             0 <= age < 30
             dependents > 0
@@ -193,7 +193,7 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_10(self):
+    def test_risk_profile_base_marital_status_case_2(self):
         """Scenario 10:
             0 <= age < 30
             dependents > 0
@@ -213,7 +213,7 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_11(self):
+    def test_risk_profile_base_risk_questions_case_2(self):
         """Scenario 11:
             0 <= age < 30
             dependents > 0
@@ -233,7 +233,7 @@ class RiskTest(TestCase):
             'life': 'regular'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_12(self):
+    def test_risk_profile_base_risk_questions_case_3(self):
         """Scenario 12:
             0 <= age < 30
             dependents > 0
@@ -253,7 +253,7 @@ class RiskTest(TestCase):
             'life': 'regular'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_13(self):
+    def test_risk_profile_base_risk_questions_case_4(self):
         """Scenario 13:
             0 <= age < 30
             dependents > 0
@@ -273,7 +273,7 @@ class RiskTest(TestCase):
             'life': 'responsible'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_14(self):
+    def test_risk_profile_base_vehicle_case_2(self):
         """Scenario 14:
             0 <= age < 30
             dependents > 0
@@ -293,7 +293,7 @@ class RiskTest(TestCase):
             'life': 'economic'
         }, json.loads(result))
 
-    def test_risk_profile_scenario_15(self):
+    def test_risk_profile_base_vehicle_case_3(self):
         """Scenario 15:
             0 <= age < 30
             dependents > 0
