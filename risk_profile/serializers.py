@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import serializers
 
 from risk_profile.objects import UserData
@@ -16,8 +18,15 @@ class HouseSerializer(serializers.Serializer):
         pass
 
 
+def less_than_current_year(value):
+    if value > datetime.now().year:
+        raise serializers.ValidationError(
+            'Vehicle year must be less than current year')
+
+
 class VehicleSerializer(serializers.Serializer):
-    year = serializers.IntegerField(required=False)
+    year = serializers.IntegerField(
+        required=False, validators=[less_than_current_year])
 
     def update(self, instance, validated_data):
         pass
