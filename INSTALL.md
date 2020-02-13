@@ -7,7 +7,7 @@
 
 1. Activate the virtualenv created
 
-1. Run
+1. `cd` into cloned origin project root dir and run
 
    ``` $ pip install -r requirements.txt ```
 
