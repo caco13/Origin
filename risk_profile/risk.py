@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Risk(object):
-    INELEGIBLE = 'inelegible'
+    INELIGIBLE = 'ineligible'
     MORTGAGED = 'mortgaged'
     MARRIED = 'married'
     ECONOMIC = 'economic'
@@ -49,7 +49,7 @@ class Risk(object):
 
     def evaluate_risk(self):
         for key in [self.AUTO, self.DISABILITY, self.HOME, self.LIFE]:
-            if self.risk[key] != self.INELEGIBLE:
+            if self.risk[key] != self.INELIGIBLE:
                 if self.scores[key] <= 0:
                     self.risk[key] = self.ECONOMIC
                 elif 1 <= self.scores[key] <= 2:
@@ -59,7 +59,7 @@ class Risk(object):
 
     def disability_eligible(self):
         if self.user_data['income'] < 1 or self.user_data['age'] > 60:
-            self.risk[self.DISABILITY] = self.INELEGIBLE
+            self.risk[self.DISABILITY] = self.INELIGIBLE
             return False
 
         return True
@@ -71,15 +71,17 @@ class Risk(object):
             self.scores[self.DISABILITY] -= 1
         if self.user_data['income'] > 200000:
             self.scores[self.DISABILITY] -= 1
-        if self.user_data['house']['ownership_status'] and \
+        if self.user_data['house'] and \
                 self.user_data['house']['ownership_status'] == self.MORTGAGED:
+            self.scores[self.DISABILITY] += 1
+        if self.user_data['dependents'] > 0:
             self.scores[self.DISABILITY] += 1
         if self.user_data['marital_status'] == self.MARRIED:
             self.scores[self.DISABILITY] -= 1
 
     def auto_insurance_eligible(self):
         if not self.user_data['vehicle']:
-            self.risk[self.AUTO] = self.INELEGIBLE
+            self.risk[self.AUTO] = self.INELIGIBLE
             return False
 
         return True
@@ -97,7 +99,7 @@ class Risk(object):
 
     def home_insurance_eligible(self):
         if not self.user_data['house']:
-            self.risk[self.HOME] = self.INELEGIBLE
+            self.risk[self.HOME] = self.INELIGIBLE
             return False
 
         return True
@@ -109,13 +111,13 @@ class Risk(object):
             self.scores[self.HOME] -= 1
         if self.user_data['income'] > 200000:
             self.scores[self.HOME] -= 1
-        if self.user_data['house']['ownership_status'] and \
+        if self.user_data['house'] and \
                 self.user_data['house']['ownership_status'] == self.MORTGAGED:
             self.scores[self.HOME] += 1
 
     def life_insurance_eligible(self):
         if self.user_data['age'] > 60:
-            self.risk[self.LIFE] = self.INELEGIBLE
+            self.risk[self.LIFE] = self.INELIGIBLE
             return False
 
         return True
