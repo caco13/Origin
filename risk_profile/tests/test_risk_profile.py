@@ -31,7 +31,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_age_case_2(self):
         """
@@ -51,7 +51,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'regular'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_age_case_3(self):
         """
@@ -71,7 +71,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'regular', 'home': 'regular',
             'life': 'regular'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_age_case_4(self):
         """
@@ -91,7 +91,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'ineligible', 'home': 'regular',
             'life': 'ineligible'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_dependents_case_2(self):
         """
@@ -111,7 +111,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_house_case_2(self):
         """
@@ -131,7 +131,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_house_case_3(self):
         """
@@ -151,7 +151,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'ineligible',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_income_case_2(self):
         """Scenario 8:
@@ -171,7 +171,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_income_case_3(self):
         """Scenario 9:
@@ -191,7 +191,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'ineligible', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_marital_status_case_2(self):
         """Scenario 10:
@@ -211,7 +211,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_risk_questions_case_2(self):
         """Scenario 11:
@@ -231,7 +231,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'regular'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_risk_questions_case_3(self):
         """Scenario 12:
@@ -251,7 +251,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'regular', 'home': 'regular',
             'life': 'regular'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_risk_questions_case_4(self):
         """Scenario 13:
@@ -271,7 +271,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'regular', 'disability': 'regular', 'home': 'regular',
             'life': 'responsible'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_vehicle_case_2(self):
         """Scenario 14:
@@ -291,7 +291,7 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'economic', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
 
     def test_risk_profile_base_vehicle_case_3(self):
         """Scenario 15:
@@ -311,4 +311,4 @@ class RiskTest(TestCase):
         self.assertEqual({
             'auto': 'ineligible', 'disability': 'economic', 'home': 'economic',
             'life': 'economic'
-        }, json.loads(result))
+        }, result)
