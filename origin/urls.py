@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+
+from risk_profile.views import UserDataViewSet
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+router = routers.DefaultRouter()
+router.register(r'usersdata', UserDataViewSet, basename='userdata')
+
+urlpatterns += router.urls
